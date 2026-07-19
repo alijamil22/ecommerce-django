@@ -31,12 +31,14 @@
 - [x] Test homepage renders with product data from DB
 - [x] Sample data script: 3 categories, 7 products with images
 
-### Day 5 — Product Catalog & Search
-- [ ] Product list view with pagination
-- [ ] Product detail view
-- [ ] Search view (search_results.html)
-- [ ] Category filtering from navigation
-- [ ] Convert `product.html`, `product_detail.html`, `search_results.html`
+### Day 5 — Product Catalog & Search ✅ DONE
+- [x] Product list view with pagination (`product_list`, 8/page, ordered)
+- [x] Category views via clean URL `/category/<slug>/` (`category_products`)
+- [x] Product detail view (dynamic fields, no hardcoded content)
+- [x] Search view + `search_results.html` (name + description, `Q` filter, paginated)
+- [x] Category filtering wired into navigation (`base.html` Shop By Categories + Accessories dropdowns)
+- [x] Converted `product.html`, `product_detail.html`, `search_results.html` to DB-driven templates
+- [x] Fixed `UnorderedObjectListWarning` by ordering product querysets
 
 ### Day 6 — Cart Functionality
 - [ ] AddToCartView, RemoveFromCartView, UpdateCartView

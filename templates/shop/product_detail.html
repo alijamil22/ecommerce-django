@@ -315,10 +315,10 @@
             <div class="container">
                 <!-- BEGIN breadcrumb -->
                 <ul class="breadcrumb m-b-10 f-s-12">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Mobile Phone</a></li>
-                    <li><a href="#">Apple</a></li>
-                    <li class="active">iPhone 6S Plus</li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'product_list' %}">Products</a></li>
+                    <li><a href="{% url 'category_products' product.category.slug %}">{{ product.category.name }}</a></li>
+                    <li class="active">{{ product.name }}</li>
                 </ul>
                 <!-- END breadcrumb -->
                 
@@ -342,7 +342,7 @@
                             <!-- END product-thumbnail -->
                             <!-- BEGIN product-main-image -->
                             <div class="product-main-image" data-id="main-image">
-                                <img src="{% static 'img/iphone-6s-plus.png' %}" alt="" />
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" />
                             </div>
                             <!-- END product-main-image -->
                         </div>
@@ -351,21 +351,18 @@
                         <div class="product-info">
                             <!-- BEGIN product-info-header -->
                             <div class="product-info-header">
-                                <h1 class="product-title"><span class="label label-success">41% OFF</span> Apple iPhone 6S Plus (16GB) Silver - #89270182 </h1>
+                                <h1 class="product-title">
+                                    {% if product.compare_price %}<span class="label label-success">SALE</span>{% endif %}
+                                    {{ product.name }}
+                                </h1>
                                 <ul class="product-category">
-                                    <li><a href="#">iPhone</a></li>
-                                    <li>/</li>
-                                    <li><a href="#">mobile phone</a></li>
-                                    <li>/</li>
-                                    <li><a href="#">electronics</a></li>
-                                    <li>/</li>
-                                    <li><a href="#">lifestyle</a></li>
+                                    <li><a href="{% url 'category_products' product.category.slug %}">{{ product.category.name }}</a></li>
                                 </ul>
                             </div>
                             <!-- END product-info-header -->
                             <!-- BEGIN product-warranty -->
                             <div class="product-warranty">
-                                <div class="pull-right">Availability: In stock</div>
+                                <div class="pull-right">Availability: {% if product.stock > 0 %}In stock ({{ product.stock }} available){% else %}Out of stock{% endif %}</div>
                                 <div><b>1 Year</b> Local Manufacturer Warranty</div>
                             </div>
                             <!-- END product-warranty -->
@@ -393,11 +390,13 @@
                             <!-- END product-social -->
                             <!-- BEGIN product-purchase-container -->
                             <div class="product-purchase-container">
+                                {% if product.compare_price %}
                                 <div class="product-discount">
-                                    <span class="discount">$869.00</span>
+                                    <span class="discount">${{ product.compare_price }}</span>
                                 </div>
+                                {% endif %}
                                 <div class="product-price">
-                                    <div class="price">$749.00</div>
+                                    <div class="price">${{ product.price }}</div>
                                 </div>
                                 <button class="btn btn-inverse btn-lg" type="submit">ADD TO CART</button>
                             </div>
@@ -425,9 +424,9 @@
                                         <img src="{% static 'img/product-main.jpg' %}" alt="" />
                                     </div>
                                     <div class="desc">
-                                        <h4>iPhone 6s</h4>
+                                        <h4>{{ product.name }}</h4>
                                         <p>
-                                            The moment you use iPhone 6s, you know you’ve never felt anything like it. With a single press, 3D Touch lets you do more than ever before. Live Photos bring your memories to life in a powerfully vivid way. And that’s just the beginning. Take a deeper look at iPhone 6s, and you’ll find innovation on every level.
+                                            {{ product.description }}
                                         </p>
                                     </div>
                                 </div>
