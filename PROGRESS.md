@@ -8,150 +8,99 @@
 - [x] `settings.py` configured (apps registered, templates dir, static/media)
 - [x] Folder structure created (templates/, static/, media/)
 - [x] `.gitignore` created
-- [x] Git initialized and committed
+- [x] Git initialized, committed, remote set to `github.com/alijamil22/ecommerce-django.git`
 
-### Day 2 — Import HTML Templates & Assets (NEXT)
-- [ ] Copy all 16 HTML files from `ecommerce_template_content_html/` into `templates/shop/`
-- [ ] Copy all assets (css, js, img, plugins) from `assets/` into `static/`
-- [ ] Update all asset paths in HTML from `assets/` to `{% static '...' %}`
-- [ ] Create `base.html` with header/footer/nav extracted
-- [ ] Create template tags file
-- [ ] Add Stripe & SendGrid settings to `settings.py`
-- [ ] Add environment variables to `.env`
+### Day 2 — Import HTML Templates & Assets ✅ DONE
+- [x] 14 HTML files copied from `ecommerce_template_content_html/` → `templates/shop/`
+- [x] 859 static assets (css, js, img, plugins) copied → `static/`
+- [x] All `assets/...` paths replaced with `{% static '...' %}` and `{% load static %}` added
+- [x] Template tags file skipped (agreed not needed)
 
 ### Day 3 — Models & Database ✅ DONE
-- [x] Created all models (Category, Product, Cart, CartItem, Order, OrderItem, ShippingAddress)
-- [x] Registered models in admin.py
-- [x] Ran makemigrations and migrate
-- [x] Created superuser
-- [x] Admin running and working
+- [x] Models created: Category, Product, Cart, CartItem, Order, OrderItem, ShippingAddress
+- [x] Admin registered with list_display, list_editable, inlines
+- [x] Migrations run, database tables created
+- [x] Superuser created, admin working
 
-### Day 4 — Template Inheritance & Base Structure
-- [ ] Extract header/nav into `base.html`
-- [ ] Extract footer into `base.html`
-- [ ] Convert `index.html` to extend `base.html`
-- [ ] Add cart context processor
-- [ ] Add template tags (price formatting, cart count)
-- [ ] Test homepage renders correctly
+### Day 4 — Views, URLs & Homepage (IN PROGRESS)
+- [x] Write `shop/views.py` (home, product_list, product_detail)
+- [x] Create `shop/urls.py` with homepage route
+- [x] Wire project-level `urls.py` → `shop/urls.py`
+- [ ] Replace hardcoded products in `index.html` with Django `{% for %}` loop
+- [ ] Create `base.html` with header/footer/nav extracted
+- [ ] Test homepage renders with product data from DB
 
-### Day 5 — Product Views & Templates
-- [ ] Create `ProductListView` for catalog page
-- [ ] Create `ProductDetailView` for product detail page
-- [ ] Create `CategoryView` for category filtering
-- [ ] Create `SearchView` for search functionality
+### Day 5 — Product Catalog & Search
+- [ ] Product list view with pagination
+- [ ] Product detail view
+- [ ] Search view (search_results.html)
+- [ ] Category filtering from navigation
 - [ ] Convert `product.html`, `product_detail.html`, `search_results.html`
-- [ ] Wire up URLs
 
 ### Day 6 — Cart Functionality
-- [ ] Create `AddToCartView` (session-based cart)
-- [ ] Create `RemoveFromCartView`
-- [ ] Create `UpdateCartView` (change quantities)
-- [ ] Create `CartView` to display cart page
+- [ ] AddToCartView, RemoveFromCartView, UpdateCartView
+- [ ] Session-based cart for non-logged-in users
 - [ ] Convert `checkout_cart.html`
-- [ ] Add cart to header (mini cart dropdown)
+- [ ] Mini cart dropdown in header
 
 ### Day 7 — Checkout Part 1: Shipping Info
-- [ ] Create `CheckoutInfoForm` (shipping address form)
-- [ ] Create `CheckoutInfoView`
-- [ ] Validate form and store in session
-- [ ] Convert `checkout_info.html`
-- [ ] Wire checkout steps progress bar
+- [ ] CheckoutInfoForm, CheckoutInfoView
+- [ ] Convert `checkout_info.html` with form rendering
+- [ ] Store shipping data in session
 
 ### Day 8 — Checkout Part 2: Payment & Order Complete
-- [ ] Create `CheckoutPaymentView`
+- [ ] CheckoutPaymentView
 - [ ] Convert `checkout_payment.html`
-- [ ] Create `OrderCompleteView`
+- [ ] OrderCompleteView
 - [ ] Convert `checkout_complete.html`
-- [ ] Full checkout flow test (cart → info → payment → complete)
+- [ ] End-to-end checkout flow
 
-### Day 9 — User Authentication & Accounts
-- [ ] Create login view
-- [ ] Create registration view
-- [ ] Create password reset view
+### Day 9 — User Authentication & Account
+- [ ] Login, register, password reset views
 - [ ] Convert `my_account.html` (profile, order history)
-- [ ] Add login/register links in header
-- [ ] Protected order history page
+- [ ] Login/register links in header
 
 ### Day 10 — Static Pages & Contact
-- [ ] Convert `about_us.html`
-- [ ] Convert `contact_us.html` with Django form
-- [ ] Convert `faq.html`
-- [ ] Create `ContactForm` and `ContactView`
-- [ ] Wire up URLs for all static pages
+- [ ] Convert `about_us.html`, `faq.html`
+- [ ] ContactForm + ContactView (SendGrid email)
+- [ ] Wire all static page URLs
 
 ### Day 11 — Stripe Setup
-- [ ] Install stripe Python package
-- [ ] Add Stripe keys to `.env` and `settings.py`
-- [ ] Load Stripe.js in payment template
-- [ ] Create PaymentIntent on backend
-- [ ] Handle tokenized card on frontend
-- [ ] Confirm payment on server
+- [ ] Install stripe, add keys to `.env` and `settings.py`
+- [ ] PaymentIntent creation, Stripe.js in checkout
+- [ ] Confirm payment flow
 
 ### Day 12 — Stripe Webhooks & Order Processing
-- [ ] Create Stripe webhook endpoint
-- [ ] Handle `payment_intent.succeeded` event
-- [ ] Mark order as completed
-- [ ] Update product stock
-- [ ] Clear cart after successful payment
-- [ ] Test full payment flow end-to-end
+- [ ] Webhook endpoint for `payment_intent.succeeded`
+- [ ] Create Order, clear Cart, deduct stock on webhook
+- [ ] Test full payment flow
 
 ### Day 13 — SendGrid Setup
-- [ ] Install sendgrid Python package
-- [ ] Add SendGrid API key to `.env` and `settings.py`
-- [ ] Create email utility functions
+- [ ] Install sendgrid, add API key to `.env` and `settings.py`
+- [ ] Email utility functions
 
 ### Day 14 — SendGrid Email Templates
-- [ ] Order confirmation email template
-- [ ] Order shipped email template
-- [ ] Password reset email template
-- [ ] Welcome email template
-- [ ] Contact form auto-reply template
+- [ ] Order confirmation, shipped, welcome, password reset templates
 
-### Day 15 — SendGrid Integration & Triggers
-- [ ] Send order confirmation on payment success
-- [ ] Send welcome email on registration
-- [ ] Send contact form notification to admin
-- [ ] Wire up password reset emails
-- [ ] Test all email flows
+### Day 15 — SendGrid Integration
+- [ ] Send email on order complete, registration, contact form
+- [ ] Wire password reset emails
 
-### Day 16 — Polish & Responsive
-- [ ] Ensure all templates are mobile-responsive
-- [ ] Fix any broken layouts from template conversion
-- [ ] Test all pages on mobile viewport
-- [ ] Review and fix CSS
+### Day 16 — Polish
+- [ ] Mobile responsive check, CSS review, fix broken layouts
 
-### Day 17 — Error Handling & Validation
-- [ ] Add 404 template
-- [ ] Add 500 template
-- [ ] Form validation error messages
-- [ ] Empty cart state
-- [ ] Out of stock handling
-- [ ] Payment failure handling
+### Day 17 — Error Handling
+- [ ] 404/500 templates, empty cart, out of stock, payment failure
 
 ### Day 18 — Testing
-- [ ] Write model tests
-- [ ] Write view tests
-- [ ] Write form tests
-- [ ] Test checkout flow
-- [ ] Test payment flow
-- [ ] Test email sending
+- [ ] Model, view, form tests; checkout + payment flow tests
 
-### Day 19 — Admin Panel & Dashboard
-- [ ] Customize admin for Product model
-- [ ] Customize admin for Order model
-- [ ] Add order status management in admin
-- [ ] Add dashboard widgets (total sales, orders count)
+### Day 19 — Admin Panel
+- [ ] Dashboard widgets, order status management
 
-### Day 20 — Final Review & Deployment Prep
-- [ ] Review all templates for broken links
-- [ ] Review all static files references
-- [ ] Update SECRET_KEY for production
-- [ ] Set DEBUG=False
-- [ ] Configure ALLOWED_HOSTS
-- [ ] Prepare .env for production
-- [ ] Final `python manage.py check`
-- [ ] Final git commit
+### Day 20 — Deployment Prep
+- [ ] Production settings, final check, final commit
 
 ---
 
-**Start new session with:** *"Read PROGRESS.md and continue where I left off."*
+**Start new session with:** `Read PROGRESS.md and continue where I left off.`
