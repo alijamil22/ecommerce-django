@@ -5,9 +5,13 @@ from .models import Product, Category
 def home(request):
     products = Product.objects.filter(available=True)[:8]
     categories = Category.objects.all()
+    mobile_products = Product.objects.filter(category__name='Mobile Phone', available=True)
+    tablet_products = Product.objects.filter(category__name='Tablet', available=True)
     return render(request, 'shop/index.html', {
         'products': products,
         'categories': categories,
+        'mobile_products': mobile_products,
+        'tablet_products': tablet_products,
     })
 
 

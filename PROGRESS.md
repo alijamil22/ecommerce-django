@@ -22,13 +22,14 @@
 - [x] Migrations run, database tables created
 - [x] Superuser created, admin working
 
-### Day 4 — Views, URLs & Homepage (IN PROGRESS)
+### Day 4 — Views, URLs & Homepage ✅ DONE
 - [x] Write `shop/views.py` (home, product_list, product_detail)
-- [x] Create `shop/urls.py` with homepage route
-- [x] Wire project-level `urls.py` → `shop/urls.py`
-- [ ] Replace hardcoded products in `index.html` with Django `{% for %}` loop
-- [ ] Create `base.html` with header/footer/nav extracted
-- [ ] Test homepage renders with product data from DB
+- [x] Create `shop/urls.py` with homepage, product list, product detail routes
+- [x] Wire project-level `urls.py` → `shop/urls.py` + media serving for dev
+- [x] Create `base.html` with header/footer/nav extracted
+- [x] Rewrite `index.html` to extend `base.html` + product `{% for %}` loops
+- [x] Test homepage renders with product data from DB
+- [x] Sample data script: 3 categories, 7 products with images
 
 ### Day 5 — Product Catalog & Search
 - [ ] Product list view with pagination
